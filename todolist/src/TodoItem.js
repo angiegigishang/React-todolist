@@ -9,7 +9,7 @@ class TodoItem extends Component {
     render() {
         return (
         <div onClick={this.handleClick}>
-            {this.props.content}
+            {this.props.content}----{this.props.content}
         </div>
         )
     }
