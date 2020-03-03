@@ -7,7 +7,7 @@ class TodoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: '',
+      inputValue: 'dd',
       list: ['math']
     }
   }
