@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import TodoItem from './TodoItem.js';
+import axios from 'axios';
 import './style.css';
 
-class TodoList extends React.Component {
+class TodoList extends Component {
 
   constructor(props) {
     super(props);
@@ -34,6 +35,12 @@ class TodoList extends React.Component {
     )
   }
 
+  componentDidMount() {
+    axios.get('http://localhost:3000/api/todolist')
+      .then(() => {alert('succ')})
+      .catch(() => {alert('error')})
+  }
+
   getTodoItem() {
     return this.state.list.map((item, index) => {
       return (
@@ -59,7 +66,7 @@ class TodoList extends React.Component {
     this.setState((prevState) => ({
       list: [...prevState.list, prevState.inputValue],
       inputValue: ''
-    }))
+    })) 
   }
 
   handleItemDelete(index) {
@@ -68,7 +75,7 @@ class TodoList extends React.Component {
     this.setState((prevState) =>{
       const list = [...prevState.list];
       list.splice(index, 1);
-      return list
+      return {list};
     })
   }
 }
