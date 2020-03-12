@@ -36,8 +36,12 @@ class TodoList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/api/todolist')
-      .then(() => {alert('succ')})
+    axios.post('http://192.168.99.106:8080/user/list', {
+      'HEAD': {'aaaaa':''},
+      'BODY': {'aaaaa':''},
+      'Content-Type':'application/json'
+    })
+      .then((res) => {console.log(res)})
       .catch(() => {alert('error')})
   }
 
