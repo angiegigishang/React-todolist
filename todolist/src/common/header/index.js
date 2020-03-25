@@ -9,11 +9,13 @@ import {
     Button,
     SearchWrapper
 } from './style';
+import {GlobalStyle} from '../.././statics/iconfont/iconfont.js';
 
 class Header extends Component {
     render() {
         return (
             <HeaderWrapper>
+                <GlobalStyle/>
                 <Logo href="/"/>
                 <Nav>
                     <NavItem className='left'>首页</NavItem>
