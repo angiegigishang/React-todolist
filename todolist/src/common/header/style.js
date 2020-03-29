@@ -65,6 +65,10 @@ export const NavSearch = styled.input.attrs({
     &.slide-enter-active {
         width: 240px;
     }
+    &.slide-exit {
+        width: 240px;
+        transition: all .2s ease-out;
+    }
     &.slide-exit-active {
         width: 160px;
     }
