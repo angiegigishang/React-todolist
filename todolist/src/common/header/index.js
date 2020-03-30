@@ -10,9 +10,37 @@ import {
     NavSearch,
     Addition,
     Button,
-    SearchWrapper
+    SearchWrapper,
+    SearchInfo,
+    SearchInfoTitle,
+    SearchInfoSwitch,
+    SearchInfoItem,
+    SearchInfoList
 } from './style';
 import {GlobalStyle} from '../.././statics/iconfont/iconfont.js';
+
+const getListArea = (show) => {
+    if(show) {
+        return (
+            <SearchInfo>
+                <SearchInfoTitle>
+                    热门搜索
+                    <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                </SearchInfoTitle>
+                <SearchInfoList>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>文化</SearchInfoItem>
+                    <SearchInfoItem>科技</SearchInfoItem>
+                    <SearchInfoItem>生活</SearchInfoItem>
+                    <SearchInfoItem>电影</SearchInfoItem>
+                    <SearchInfoItem>娱乐</SearchInfoItem>
+                </SearchInfoList>
+            </SearchInfo>
+        )
+    } else {
+        return null;
+    }
+}
 
 const Header = (props) => {
     return (
@@ -39,6 +67,7 @@ const Header = (props) => {
                         ></NavSearch>
                     </CSSTransition>        
                     <i className={props.focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
+                    {getListArea(props.focused)}
                 </SearchWrapper>            
             </Nav>
             <Addition>
