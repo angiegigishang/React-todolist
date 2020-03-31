@@ -20,8 +20,8 @@ import {
 import {GlobalStyle} from '../.././statics/iconfont/iconfont.js';
 
 class Header extends Component {
-    getListArea(show) {
-        if(show) {
+    getListArea() {
+        if(this.props.focused) {
             return (
                 <SearchInfo>
                     <SearchInfoTitle>
@@ -29,12 +29,12 @@ class Header extends Component {
                         <SearchInfoSwitch>换一批</SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoList>
-                        <SearchInfoItem>教育</SearchInfoItem>
-                        <SearchInfoItem>文化</SearchInfoItem>
-                        <SearchInfoItem>科技</SearchInfoItem>
-                        <SearchInfoItem>生活</SearchInfoItem>
-                        <SearchInfoItem>电影</SearchInfoItem>
-                        <SearchInfoItem>娱乐</SearchInfoItem>
+                        {
+                            this.props.list.map((item) => {
+                                return <SearchInfoItem key={item}>{item}</SearchInfoItem>
+                            })
+                            
+                        } 
                     </SearchInfoList>
                 </SearchInfo>
             )
@@ -68,7 +68,7 @@ class Header extends Component {
                             ></NavSearch>
                         </CSSTransition>        
                         <i className={this.props.focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
-                        {this.getListArea(this.props.focused)}
+                        {this.getListArea()}
                     </SearchWrapper>            
                 </Nav>
                 <Addition>
@@ -85,7 +85,8 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        focused: state.getIn(['header', 'focused'])
+        focused: state.getIn(['header', 'focused']),
+        list: state.getIn(['header', 'list'])
         //focused: state.get('header').get('focused')
     }
 }
@@ -93,6 +94,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         handleInputFocus() {
+            dispatch(actionCreators.getList());
             dispatch(actionCreators.searchFocus());
         },
         handleInputBlur() {
