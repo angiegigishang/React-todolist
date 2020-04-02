@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter, Route} from 'react-router-dom';
 import Header from './common/header';
 import {GlobalRestStyle} from './style.js';
 import store from './store';
@@ -11,8 +12,16 @@ class App extends Component {
         return (
             <Fragment>
                 <Provider store={store}>
-                    <GlobalRestStyle/>
-                    <Header/>
+                    <div>
+                        <GlobalRestStyle/>
+                        <Header/>
+                        <BrowserRouter>
+                            <div>
+                                <Route path='/' exact render={() => <div>home</div>}></Route>
+                                <Route path='/detail' exact render={() => <div>detail</div>}></Route>
+                            </div>
+                        </BrowserRouter>
+                    </div>  
                 </Provider>
             </Fragment>  
         )
