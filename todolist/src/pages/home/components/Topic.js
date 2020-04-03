@@ -4,11 +4,12 @@ import { TopicWrapper, TopicItem } from '../style';
 
 class Topic extends Component {
     render() {
+        const { list } = this.props;
         return (
             <TopicWrapper>
                 {
-                    this.props.list.map((item) => {
-                        return (
+                    this.proplist.map((item) => 
+                        (
                             <TopicItem key={item.get('id')}>
                                 <img 
                                     src={item.get('imgUrl')}
@@ -17,7 +18,7 @@ class Topic extends Component {
                                 {item.get('title')}
                             </TopicItem>
                         )
-                    })
+                    )
                 }
                 
             </TopicWrapper>
