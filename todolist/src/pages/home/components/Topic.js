@@ -8,7 +8,7 @@ class Topic extends Component {
         return (
             <TopicWrapper>
                 {
-                    this.proplist.map((item) => 
+                    list.map((item) => 
                         (
                             <TopicItem key={item.get('id')}>
                                 <img 
